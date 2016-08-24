@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles%}
+{% load i18n %}
+
+{% block my_scripts %}
+    <script src="{% static 'shop/js/scripts.js' %}"></script>
+{% endblock my_scripts %}
+
+{% block content %}
+
+    {% if request.session.cart %}
+        <h1>{% trans "Cart" %}</h1>
+        <table class="table table-striped cart-table">
+            <thead>
+                <tr>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Size" %}</th>
+                    <th>{% trans "Quantity" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "Options" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in request.session.cart %}
+                <tr>
+                    <td><a href="/{{ product.category }}/{{ product.id }}/">{{ product.name }}</a></td>
+                    <td>{{ product.size }}</td>
+                    <td><input type="number" value="{{ product.quantity_in_cart }}" data-id="{{ product.id }}" min="1" max="100"></td>
+                    <td>{{ product.price }}</td>
+                    <td><a href="/cart/?delete={{ product.id }}">{% trans "Delete" %}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p>{{ request.session.total_cart }}</p>
+        <a href="/cart/order/" class="btn btn-default">{% trans "Make an order" %}</a>
+    {% else %}
+    <h1>{% trans "Empty Cart" %}</h1>
+    {% endif %}
+
+{% endblock content %}

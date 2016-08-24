@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+    {% if user.is_authenticated  %}
+        <h3>{% trans "My Profile" %}</h3>
+        <p>{% trans "Username" %}: {{ user.username }}</p>
+        <p>{% trans "Email" %}: {{ user.email }}</p>
+        <p>{% trans "First name" %}: {{ user.first_name }}</p>
+        <p>{% trans "Last name" %}: {{ user.last_name }}</p>
+        <p>{% trans "Phone" %}: {{ user_all_info.phone }}</p>
+        <h4>{% trans "Orders" %}</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans "Name product" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "Quantity" %}</th>
+                    <th>{% trans "Sum" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr class="header-table">
+                    <td colspan="4"><h5>Order #{{ order.id }} - {{ order.date }} - {{ order.total_sum }}</h5></td>
+                </tr>
+                    {% for products in products_orders %}
+                        {% for product in products %}
+                            {% if product.order_id == order.id %}
+                            <tr>
+                                <td>{{ product.product.name }}</td>
+                                <td>{{ product.product.price }}</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.sum }}</td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "You must to sign up." %}</p>
+    {% endif %}
+
+{% endblock %}

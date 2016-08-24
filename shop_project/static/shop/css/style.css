@@ -1,0 +1,178 @@
+/*html, body, section, div{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    border: 1px solid red;
+    width: 1004px;
+    margin: 10px auto;
+    padding: 10px;
+}
+header nav li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#content{
+    border: 1px solid red;
+    width: 1004px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.ul-products{
+    display: block;
+}
+.ul-products li{
+    display: inline-block;
+    border: 1px solid green;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 5px;
+}
+.ul-products li .image-wrapper{
+    width: 250px;
+    height: 240px;
+    margin: 0 auto;
+}
+.ul-products li .image-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.products-list{
+    width: 100%;
+}
+.products-list thead{
+    text-align: center;
+}
+.products-list td{
+    padding: 5px;
+}
+.products-list td .image-wrapper{
+    width: 100px;
+    height: 90px;
+    margin: 0 auto;
+    text-align: center;
+}
+.products-list td .image-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}*/
+
+header{
+    margin-top: 10px;
+}
+.search-product p{
+    display: block;
+    float: left;
+    margin: 2px 20px 10px 0;
+}
+
+.thumbnail{
+    text-align: center;
+}
+.img-wrapper{
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+}
+.image-wrapper{
+    width: 100px;
+    height: 90px;
+    margin: 0 auto;
+    text-align: center;
+}
+.img-wrapper img,
+.image-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.products-list th{
+    text-align: center;
+}
+
+.prod-detail-img{
+    width: 250px;
+    height: 300px;
+    text-align: center;
+    float: left;
+    margin-right: 20px;
+}
+.prod-detail-img img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.prod-detail-info{
+    float: left;
+    width: calc(100% - 270px);
+}
+
+#login{
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-horizontal{
+    width: 450px;
+    padding: 25px;
+    margin: 0 auto;
+}
+.form-horizontal p{
+    clear: both;
+}
+.form-horizontal p label,
+.registration-form p label{
+    margin-top: 5px;
+}
+.form-horizontal p input[type="text"],
+.form-horizontal p input[type="number"],
+.form-horizontal p input[type="file"],
+.form-horizontal p textarea,
+.form-horizontal p select{
+    float: right;
+    width: 300px;
+}
+.form-horizontal p textarea{
+    height: 60px;
+}
+.form-horizontal button,
+.registration-form button{
+    width: 100%;
+}
+
+.registration-form{
+    width: 550px;
+    padding: 25px;
+    margin: 0 auto;
+}
+.registration-form p span{
+    display: block;
+    /*margin-top: 30px;*/
+}
+.registration-form p input[type="text"],
+.registration-form p input[type="password"]{
+    float: right;
+    width: 300px;
+}
+
+.is_available{
+    color: green;
+}
+.not_available{
+    color: red;
+}
+
+.cart-table input[type="number"]{
+    width: 50px;
+}
+
+.header-table{
+    text-align: center;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load cache %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Shop" %}</title>
+
+    <link href="{% static 'shop/bootstrap-3.3.2/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'shop/bootstrap-3.3.2/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'shop/css/style.css' %}" rel="stylesheet" type="text/css">
+
+    <script src="{% static 'shop/js/jquery-1.9.1.min.js' %}"></script>
+    <script src="{% static 'shop/bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
+    {% block my_scripts %} {% endblock my_scripts %}
+</head>
+<body>
+    <header class="container">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">{% trans "Home" %}</a>
+                </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                {% for category in categories %}
+                <li><a href="/{{ category.id }}/">{{ category.name }}</a></li>
+                {% endfor %}
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated  %}
+                    <li><a href="/cart/">{% trans "Cart" %}</a></li>
+                    <li><a href="/accounts/profile/">{% trans "Profile" %}</a></li>
+                    <li><a href="/accounts/logout/">{% trans "Logout" %}</a></li>
+                {% else %}
+                    <li><a href="/cart/">{% trans "Cart" %}</a></li>
+                    <li><a href="/accounts/login/">{% trans "Authorization" %}</a></li>
+                    <li><a href="/accounts/">{% trans "Registration" %}</a></li>
+                {% endif %}
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+    <div id="content" class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

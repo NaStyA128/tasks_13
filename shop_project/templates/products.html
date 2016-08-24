@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+    <!--<div class="search">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Search...">
+        </form>
+    </div>-->
+<a href="/add_product/" class="btn btn-default">{% trans "Add product" %}...</a>
+
+    <div class="container">
+    <table class="products-list table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "Name product" %}</th>
+                <th>{% trans "Price" %}</th>
+                <th>{% trans "Photo" %}</th>
+                <th>{% trans "Options" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prod in products %}
+            <tr>
+                <td><a href="{{ prod.id }}/">{{ prod.name }}</a></td>
+                <td><p>{{ prod.price }}</p></td>
+                <td>
+                    <div class="image-wrapper"><img src="{{ prod.image }}" alt="" /></div>
+                </td>
+                <td>
+                    <a href="/edit_product/{{ prod.id }}/">{% trans "Edit" %}</a><br>
+                    <a href="/delete_product/{{ prod.id }}/">{% trans "Delete" %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if is_paginated %}
+        <div class="pager">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">{% trans "Prev" %}</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">{% trans "Next" %}</a></li>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock %}
